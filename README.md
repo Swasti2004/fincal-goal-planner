@@ -4,6 +4,8 @@
 Built for the FinCal Innovation Hackathon, co-sponsored by HDFC Mutual Fund.
 
 🔗 **Live Demo:** https://fincal-hack.vercel.app
+    **Video Link** https://youtu.be/Qo4oMQCQF8k?si=FdttKzSJna3Eq8s8
+
 
 ---
 
