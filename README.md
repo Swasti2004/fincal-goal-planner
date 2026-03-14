@@ -1,87 +1,27 @@
 # FinCal — Goal-Based Investment Calculator
-**Team ThreadHeads · Technex 2026 · IIT BHU · HDFC Mutual Fund Investor Education**
+
+**Team ThreadHeads · Technex 2026 · IIT BHU**
+Built for the FinCal Innovation Hackathon, co-sponsored by HDFC Mutual Fund.
+
+🔗 **Live Demo:** https://fincal-hack.vercel.app
 
 ---
 
-## Prerequisites
+## What it does
 
-Make sure you have these installed on your machine:
+FinCal is a 4-step goal-based SIP calculator that helps investors plan monthly investments to reach a specific financial goal, accounting for inflation, expected returns, and tax.
 
-| Tool | Required Version | Check command |
-|------|-----------------|---------------|
-| Node.js | **v18 or higher** | `node --version` |
-| npm | v8 or higher | `npm --version` |
+**Step 1 — Choose Your Goal** — 8 presets (Home, Car, Education, Travel, Wedding, Medical, Business) + custom goal with emoji picker
 
-If Node.js is not installed, download it from https://nodejs.org (choose LTS version).
+**Step 2 — Investment Details** — Current cost of goal + years until you need the money, with live educational insights
 
----
+**Step 3 — Assumptions** — Expected return, inflation rate, optional annual step-up SIP, optional LTCG tax
 
-## Setup & Run (Step by Step)
-
-### Step 1 — Unzip the project
-```
-Unzip fincal-threadheads-final.zip
-```
-You will get a folder called `fincal/`.
-
-### Step 2 — Open terminal in the project folder
-```bash
-cd fincal
-```
-
-### Step 3 — Install dependencies
-```bash
-npm install
-```
-This installs Next.js, React, and jsPDF. Takes about 1–2 minutes.
-
-### Step 4 — Start the development server
-```bash
-npm run dev
-```
-
-### Step 5 — Open in browser
-```
-http://localhost:3000
-```
-
-That's it! The app is running.
+**Step 4 — Your Plan** — Monthly SIP needed, scenario comparison (Conservative / Balanced / Aggressive), corpus growth chart with milestone explorer, wealth breakdown, PDF download
 
 ---
 
-## Project Structure
-
-```
-fincal/
-├── src/
-│   ├── app/
-│   │   ├── layout.tsx          Root layout (metadata, skip link)
-│   │   └── page.tsx            Main orchestrator — all state lives here
-│   ├── components/
-│   │   ├── Navbar.tsx          Sticky blue header
-│   │   ├── Footer.tsx          Team ThreadHeads footer + disclaimer
-│   │   ├── ProgressHeader.tsx  4-step progress bar
-│   │   ├── steps/
-│   │   │   ├── Step1Goal.tsx   Goal selection (8 presets + custom)
-│   │   │   ├── Step2Details.tsx  Cost + years sliders
-│   │   │   ├── Step3Assumptions.tsx  Return/inflation/step-up/tax
-│   │   │   └── Step4Results.tsx  Full results page (chart, PDF, scenarios)
-│   │   └── ui/
-│   │       └── SliderInput.tsx Reusable WCAG-compliant slider
-│   ├── lib/
-│   │   ├── finance.ts          All financial formulas (pure functions)
-│   │   ├── formatters.ts       ₹ formatting helpers
-│   │   └── goals.ts            Goal presets, emojis, disclaimer text
-│   └── styles/
-│       └── globals.css         All styles (single file, no CSS modules)
-├── package.json
-├── tsconfig.json
-└── next.config.js
-```
-
----
-
-## Financial Formulas Used
+## Financial Formulas
 
 **Step 1 — Inflate goal value:**
 ```
@@ -93,18 +33,76 @@ FV = Present Cost × (1 + Inflation Rate)^Years
 SIP = FV × r ÷ [((1 + r)^n − 1) × (1 + r)]
 where r = Annual Return ÷ 12,  n = Years × 12
 ```
-This is the standard SIP-due (beginning of month) formula.
-
-For step-up SIP, binary search is used to find the base SIP that produces the required corpus via year-wise simulation.
+Standard SIP-due (beginning of month) formula. For step-up SIP, binary search is used to find the base SIP that simulates to the required corpus.
 
 ---
 
-## Build for Production
+## Tech Stack
+
+| Technology | Version |
+|---|---|
+| Next.js | 15.5.9 |
+| React | 18.3.1 |
+| TypeScript | 5.x |
+| jsPDF | 2.5.1 |
+| Chart.js | 4.4.1 (CDN) |
+| Node.js | 22.11.0 |
+
+---
+
+## Run Locally
 
 ```bash
-npm run build
-npm start
+# Clone the repo
+git clone https://github.com/Swasti2004/fincal-goal-planner.git
+cd fincal-goal-planner
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
 ```
+
+Open **http://localhost:3000**
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout, metadata, skip link
+│   └── page.tsx            # Main orchestrator — all state lives here
+├── components/
+│   ├── Navbar.tsx          # Sticky HDFC blue header
+│   ├── Footer.tsx          # Team branding + mandatory disclaimer
+│   ├── ProgressHeader.tsx  # WCAG-compliant 4-step progress bar
+│   ├── steps/
+│   │   ├── Step1Goal.tsx   # Goal selection
+│   │   ├── Step2Details.tsx
+│   │   ├── Step3Assumptions.tsx
+│   │   └── Step4Results.tsx  # Results, chart, PDF export
+│   └── ui/
+│       └── SliderInput.tsx # Reusable accessible slider
+├── lib/
+│   ├── finance.ts          # Pure financial formula functions
+│   ├── formatters.ts       # INR formatting helpers
+│   └── goals.ts            # Goal presets + mandatory disclaimer text
+└── styles/
+    └── globals.css         # All styles — HDFC brand compliant
+```
+
+---
+
+## Compliance
+
+- ✅ **WCAG 2.1 AA** — semantic HTML, ARIA roles, keyboard navigation, focus rings, screen reader labels
+- ✅ **HDFC Brand Guidelines** — colors #224c87 / #da3832 / #919090, Montserrat/Arial/Verdana fonts
+- ✅ **Mandatory Disclaimer** — verbatim on every page and in every PDF export
+- ✅ **Responsive** — desktop, tablet (768px), mobile (480px)
+- ✅ **No growth arrows or currency imagery**
 
 ---
 
