@@ -106,6 +106,16 @@ src/
 
 ---
 
+## Team — ThreadHeads
+
+| Name | Institute |
+|---|---|
+| Swasti Jain | IIPS DAVV, Indore |
+| Disha Shrivastava | IIPS DAVV, Indore |
+| Mimansa Tomar | IIPS DAVV, Indore |
+
+Built for **FinCal Innovation Hackathon** · Co-sponsored by **HDFC Mutual Fund** · **Technex 2026, IIT BHU**
+
 ## Disclaimer
 
 This tool has been designed for information purposes only. Actual results may vary depending on various factors involved in capital market. Investor should not consider above as a recommendation for any schemes of HDFC Mutual Fund. Past performance may or may not be sustained in future and is not a guarantee of any future returns.
